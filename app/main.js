@@ -6,6 +6,7 @@ console.log("Logs from your program will appear here!");
 // Uncomment this to pass the first stage
 const server = net.createServer((socket) => {
     socket.on("data", (data) => {
+        console.log(String(data).split("\r\n"))
         if(String(data).split("\r\n")[0].split(" ")[1] =="/"){
             socket.write("HTTP/1.1 200 OK\r\n\r\n");
         }
