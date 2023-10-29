@@ -16,9 +16,20 @@ console.log("Logs from your program will appear here!");
 // Uncomment this to pass the first stage
 const server = net.createServer((socket) => {
     socket.on("data", (data) => {
+        console.log(String(data).split("\r\n"))
         if(String(data).split("\r\n")[0].split(" ")[0] =="POST" && String(data).split("\r\n")[0].split(" ")[1].slice(0,6) =="/files"){
-            socket.write("HTTP/1.1 201 OK\r\n\r\n");
-            socket.end();
+            
+            fs.writeFile(dir+String(data).split("\r\n")[0].split(" ")[1].slice(7), "dataToWrite", 'utf8', (err) => {
+                if (err) {
+                  console.error('无法写入文件:', err);
+                  socket.end();
+                  return;
+                }
+              
+                socket.write("HTTP/1.1 201 \r\n\r\n");
+                socket.end();
+              });
+            
             return;
         }
         
