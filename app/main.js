@@ -43,16 +43,16 @@ const server = net.createServer((socket) => {
             
             fs.readFile(dir+String(data).split("\r\n")[0].split(" ")[1].slice(7),  (err, content) => {
                 console.log("文件内容:");
-                // if (err) {
-                //   console.log(err);
-                //   return;
-                // }
+                if (err) {
+                  console.log(err);
+                  return;
+                }
               
-
-                // console.log(String(content));
+                // console.log('文件内容:');
+                // console.log(content);
               });
 
-
+            return;
               console.log(dir+String(data).split("\r\n")[0].split(" ")[1].slice(7))
 
         }
