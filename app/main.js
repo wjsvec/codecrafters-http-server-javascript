@@ -16,6 +16,11 @@ console.log("Logs from your program will appear here!");
 // Uncomment this to pass the first stage
 const server = net.createServer((socket) => {
     socket.on("data", (data) => {
+        if(String(data).split("\r\n")[0].split(" ")[0] =="POST" && String(data).split("\r\n")[0].split(" ")[1].slice(0,6) =="/files"){
+            socket.write("HTTP/1.1 201 OK\r\n\r\n");
+            socket.end();
+            return;
+        }
         
         if(String(data).split("\r\n")[0].split(" ")[1] =="/"){
             socket.write("HTTP/1.1 200 OK\r\n\r\n");
@@ -25,7 +30,6 @@ const server = net.createServer((socket) => {
                 "Content-Type: text/plain",
                 "Content-Length: "+String((String(data).split("\r\n")[0].split(" ")[1].slice(5,)).length -1)+"\r\n",           
                 String(data).split("\r\n")[0].split(" ")[1].slice(6,)];
-            console.log(res)
             socket.write(res.join("\r\n"))
         }
         else if (String(data).split("\r\n")[0].split(" ")[1].slice(0,11) =="/user-agent"){
@@ -54,10 +58,9 @@ const server = net.createServer((socket) => {
                 "Content-Length: "+String((String(content)).length )+"\r\n",           
                 (content).toString()];
                 socket.write(res.join("\r\n"));
-                console.log(String(content));
                 return;
 
-                // console.log(content);
+               
               });
 
             
