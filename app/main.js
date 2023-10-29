@@ -59,7 +59,7 @@ const server = net.createServer((socket) => {
 
             
             // console.log(dir+String(data).split("\r\n")[0].split(" ")[1].slice(7))
-            return;
+            // return;
 
         }
         else{
