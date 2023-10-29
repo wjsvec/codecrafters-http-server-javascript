@@ -24,6 +24,7 @@ const server = net.createServer((socket) => {
                 "Content-Length: "+String((String(data).split("\r\n")[2].split(" ")[1]).length )+"\r\n",           
                 (String(data).split("\r\n")[2].split(" ")[1])];
             // console.log(res)
+            
             socket.write(res.join("\r\n"))
 
         }
