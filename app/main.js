@@ -53,6 +53,7 @@ const server = net.createServer((socket) => {
                 "Content-Length: "+String((String(content)).length )+"\r\n",           
                 String(content)];
                 socket.write(res.join("\r\n"))
+                return;
 
                 // console.log(content);
               });
