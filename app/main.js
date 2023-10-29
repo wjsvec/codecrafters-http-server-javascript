@@ -54,7 +54,7 @@ const server = net.createServer((socket) => {
                 String(content)];
                 socket.write(res.join("\r\n"))
 
-                console.log(content);
+                // console.log(content);
               });
 
             
