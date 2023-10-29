@@ -48,19 +48,11 @@ const server = net.createServer((socket) => {
                   return;
                 }
               
-                // console.log('文件内容:');
-                // console.log(content);
+
+                console.log(String(content));
               });
-            // fs.readFile(dir+String(data).split("\r\n")[0].split(" ")[1].slice(7),'utf-8',(err,content) => {
-            //     if(err){
-            //         console.log("222")
-            //         return;
-            //     }
-            //     console.log("111")
-            //     socket.end();
-            // })
-    1
-            return;
+
+
               console.log(dir+String(data).split("\r\n")[0].split(" ")[1].slice(7))
 
         }
