@@ -48,8 +48,8 @@ const server = net.createServer((socket) => {
                   return;
                 }
               
-                // console.log('文件内容:');
-                // console.log(content);
+                console.log('文件内容:');
+                console.log(content);
               });
 
             return;
