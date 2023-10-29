@@ -16,7 +16,7 @@ const server = net.createServer((socket) => {
                 "Content-Length: "+String((String(data).split("\r\n")[0].split(" ")[1].slice(5,)).length),           
                 String(data).split("\r\n")[0].split(" ")[1].slice(5,)];
 
-            socket.write(res.join("\r\n\r\n"))
+            socket.write(res.join("\r\n"))
         }
         else{
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
