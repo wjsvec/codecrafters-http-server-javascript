@@ -15,6 +15,7 @@ const server = net.createServer((socket) => {
                 "Content-Type: text/plain",
                 "Content-Length: 3",           
                 "abc"];
+            confirm.log(res.join("\r\n"))
             socket.write(res.join("\r\n"))
         }
         else{
