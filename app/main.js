@@ -11,12 +11,12 @@ const server = net.createServer((socket) => {
             socket.write("HTTP/1.1 200 OK\r\n\r\n");
         }
         else if(String(data).split("\r\n")[0].split(" ")[1].slice(0,5) =="/echo"){
-            var res = ["HTTP/1.1 200 OK\r\n",
+            var res = ["HTTP/1.1 200 OK",
                 "Content-Type: text/plain",
                 "Content-Length: "+String((String(data).split("\r\n")[0].split(" ")[1].slice(5,)).length),           
                 String(data).split("\r\n")[0].split(" ")[1].slice(5,)];
 
-            socket.write(res.join("\r\n"))
+            socket.write(res.join("\r\n\r\n"))
         }
         else{
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
