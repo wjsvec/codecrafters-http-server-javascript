@@ -11,9 +11,9 @@ const server = net.createServer((socket) => {
             socket.write("HTTP/1.1 200 OK\r\n\r\n");
         }
         else if(String(data).split("\r\n")[0].split(" ")[1].slice(0,5) =="/echo"){
-            var res = ["HTTP/1.1 200 OK\r\n",
-                "Content-Type: text/plain\r\n",
-                "Content-Length: "+String((String(data).split("\r\n")[0].split(" ")[1].slice(5,)).length +1),           
+            var res = ["HTTP/1.1 200 OK",
+                "Content-Type: text/plain",
+                "Content-Length: "+String((String(data).split("\r\n")[0].split(" ")[1].slice(5,)).length +1)+"\r\n",           
                 String(data).split("\r\n")[0].split(" ")[1].slice(5,)];
             console.log(res.join("\r\n"))
             socket.write(res.join("\r\n"))
