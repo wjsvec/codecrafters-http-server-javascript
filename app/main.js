@@ -39,7 +39,7 @@ const server = net.createServer((socket) => {
 
         }
         else if(String(data).split("\r\n")[0].split(" ")[1].slice(0,6) =="/files"){
-            console.log(String(data).split("\r\n"))
+            // console.log(String(data).split("\r\n"))
             
             fs.readFile(dir+String(data).split("\r\n")[0].split(" ")[1].slice(7),  (err, content) => {
                 console.log('文件内容:');
