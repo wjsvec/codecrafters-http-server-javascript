@@ -44,11 +44,16 @@ const server = net.createServer((socket) => {
             fs.readFile(dir+String(data).split("\r\n")[0].split(" ")[1].slice(7),  (err, content) => {
                 
                 if (err) {
-                  console.log(err);
-                  return;
+                    socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
+                    return;
                 }
               
-                console.log('文件内容:');
+                res = ["HTTP/1.1 200 OK",
+                "Content-Type: application/octet-stream",
+                "Content-Length: "+String((String(content)).length )+"\r\n",           
+                String(content)];
+                socket.write(res.join("\r\n"))
+
                 console.log(content);
               });
 
