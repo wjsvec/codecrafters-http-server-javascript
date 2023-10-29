@@ -9,6 +9,13 @@ const server = net.createServer((socket) => {
         if(String(data).split("\r\n")[0].split(" ")[1] =="/"){
             socket.write("HTTP/1.1 200 OK\r\n\r\n");
         }
+        else if(String(data).split("\r\n")[0].split(" ")[1] =="/echo/abc"){
+            var res = ["HTTP/1.1 200 OK",
+                "Content-Type: text/plain",
+                "Content-Length: 3",           
+                "abc"];
+            socket.write(res.join("\r\n"))
+        }
         else{
             socket.write("HTTP/1.1 404 Not Found\r\n\r\n");
         }
