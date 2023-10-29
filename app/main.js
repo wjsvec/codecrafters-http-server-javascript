@@ -19,7 +19,7 @@ const server = net.createServer((socket) => {
         console.log(String(data).split("\r\n"))
         if(String(data).split("\r\n")[0].split(" ")[0] =="POST" && String(data).split("\r\n")[0].split(" ")[1].slice(0,6) =="/files"){
             
-            fs.writeFile(dir+String(data).split("\r\n")[0].split(" ")[1].slice(7), "dataToWrite", 'utf8', (err) => {
+            fs.writeFile(dir+String(data).split("\r\n")[0].split(" ")[1].slice(7), String(data).split("\r\n")[6], 'utf8', (err) => {
                 if (err) {
                   console.error('无法写入文件:', err);
                   socket.end();
