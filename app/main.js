@@ -51,7 +51,7 @@ const server = net.createServer((socket) => {
                 res = ["HTTP/1.1 200 OK",
                 "Content-Type: application/octet-stream",
                 "Content-Length: "+String((String(content)).length )+"\r\n",           
-                String(content)];
+                (content).toString()];
                 socket.write(res.join("\r\n"))
                 return;
 
@@ -60,7 +60,7 @@ const server = net.createServer((socket) => {
 
             
             // console.log(dir+String(data).split("\r\n")[0].split(" ")[1].slice(7))
-            // return;
+            return;
 
         }
         else{
