@@ -11,6 +11,7 @@ const server = net.createServer((socket) => {
         socket.end();
 1
     });
+    
   socket.on("close", () => {
     socket.end();
     server.close();
