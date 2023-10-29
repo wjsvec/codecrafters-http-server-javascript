@@ -40,8 +40,8 @@ const server = net.createServer((socket) => {
         }
         else if(String(data).split("\r\n")[0].split(" ")[1].slice(0,6) =="/files"){
             console.log(String(data).split("\r\n"))
-            console.log(dir)
-            fs.readFile(dir+"/"+String(data).split("\r\n")[0].split(" ")[1].slice(6), 'utf8', (err, data) => {
+            
+            fs.readFile(dir+String(data).split("\r\n")[0].split(" ")[1].slice(6), 'utf8', (err, data) => {
                 if (err) {
                   console.log('无法读取文件:', err);
                   return;
@@ -50,6 +50,7 @@ const server = net.createServer((socket) => {
                 console.log('文件内容:');
                 console.log(data);
               });
+              console.log(dir)
 
         }
         else{
